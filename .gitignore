@@ -1,0 +1,16 @@
+*/bin/*
+*/obj/*
+.vs/*
+*.tmp
+*.csproj.user
+*.sln.DotSettings.user
+packages
+.idea/*
+.project
+.nuget/NuGet.exe
+changed-flag
+*.orig
+.vscode
+web/CMS/App_Data/CMSModules/SmartSearch/*
+.history/
+*AppPrivateSettings.config
