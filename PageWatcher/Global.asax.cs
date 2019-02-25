@@ -8,6 +8,7 @@ namespace PageWatcher
     {
         protected void Application_Start()
         {
+            //System.Threading.Thread.Sleep(15000);
             var serviceTask = new Tasks.ServiceTask();
             serviceTask.Start();
             AreaRegistration.RegisterAllAreas();
