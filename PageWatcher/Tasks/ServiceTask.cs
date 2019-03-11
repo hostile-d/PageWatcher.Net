@@ -13,7 +13,6 @@ namespace PageWatcher.Tasks
         private static string ResourceURL;
         private static string TargetCssClass;
         private static string SuccessText;
-        private static string FailText;
         private static string TelegramUrl;
         private static string TelegramBotToken;
         private static string TelegramGroupId;
@@ -23,7 +22,6 @@ namespace PageWatcher.Tasks
             ResourceURL = ReadSetting("ResourceURL");
             TargetCssClass = ReadSetting("TargetCssClass");
             SuccessText = ReadSetting("SuccessText");
-            FailText = ReadSetting("FailText");
             TelegramUrl = ReadSetting("TelegramUrl");
             TelegramBotToken = ReadSetting("TelegramBotToken");
             TelegramGroupId = ReadSetting("TelegramGroupId");
@@ -31,12 +29,12 @@ namespace PageWatcher.Tasks
 
         public async void Start()
         {
-            var task = Task.Run(async () =>
+            var task = Task.Run(() =>
             {
                 while (true)
                 {
                     LoadPage();
-                    await Task.Delay(20000);
+                    Task.Delay(20000);
                 }
             });
         }
@@ -80,7 +78,6 @@ namespace PageWatcher.Tasks
             else
             {
                 TicketsAvaliable = false;
-                SendMessage(GetFailUrlString());
             }
         }
 
@@ -88,12 +85,6 @@ namespace PageWatcher.Tasks
         {
             var ReplacedUrl = TelegramUrl.Replace("@TelegramBotToken", TelegramBotToken).Replace("@TelegramGroupId", TelegramGroupId);
             return ReplacedUrl + "&text=" + Uri.EscapeUriString(SuccessText);
-        }
-
-        private static string GetFailUrlString()
-        {
-            var ReplacedUrl = TelegramUrl.Replace("@TelegramBotToken", TelegramBotToken).Replace("@TelegramGroupId", TelegramGroupId);
-            return ReplacedUrl + "&text=" + Uri.EscapeUriString(FailText);
         }
 
         private void SendMessage(string url)
