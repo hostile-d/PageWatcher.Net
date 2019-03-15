@@ -21,6 +21,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Logger", "Index", "Logger")</li>
                 </ul>
             </div>
         </div>
@@ -29,7 +30,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - <a href="https://github.com/hostile-d/page-watcher-2">hostile-d</a>. You can adopt this app for your case.</p>
+            <p>&copy; @DateTime.Now.Year - <a href="https://github.com/hostile-d/PageWatcher.Net">hostile-d</a>. You can adopt this app for your case.</p>
         </footer>
     </div>
 

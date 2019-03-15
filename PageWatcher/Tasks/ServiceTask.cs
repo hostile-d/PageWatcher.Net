@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Configuration;
 using System.Net;
 using System.Text.RegularExpressions;
-using System.Configuration;
 using System.Threading.Tasks;
 
 namespace PageWatcher.Tasks
@@ -9,6 +9,7 @@ namespace PageWatcher.Tasks
     public class ServiceTask
     {
         public static bool TicketsAvaliable { get; set; }
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
         private static string ResourceURL;
         private static string TargetCssClass;
@@ -27,14 +28,14 @@ namespace PageWatcher.Tasks
             TelegramGroupId = ReadSetting("TelegramGroupId");
         }
 
-        public async void Start()
+        public void Start()
         {
-            var task = Task.Run(() =>
+            var task = Task.Run(async () =>
             {
                 while (true)
                 {
+                    await Task.Delay(20000);
                     LoadPage();
-                    Task.Delay(20000);
                 }
             });
         }
@@ -48,9 +49,9 @@ namespace PageWatcher.Tasks
                 string result = appSettings[key];
                 return result;
             }
-            catch (ConfigurationErrorsException)
+            catch (ConfigurationErrorsException e)
             {
-                Console.WriteLine("Error reading app settings");
+                logger.Error(e, "Error reading app settings");
                 return "Not Found";
             }
 
@@ -58,11 +59,18 @@ namespace PageWatcher.Tasks
 
         private void LoadPage()
         {
-            Console.WriteLine("LoadPage");
             using (WebClient webClient = new WebClient())
             {
-                string body = webClient.DownloadString(new Uri(ResourceURL));
-                ParseBody(body);
+                try
+                {
+                    string body = webClient.DownloadString(new Uri(ResourceURL));
+                    logger.Info("Resource URL was downloaded");
+                    ParseBody(body);
+                }
+                catch (Exception e)
+                {
+                    logger.Error(e);
+                }
             }
         }
 
@@ -91,7 +99,15 @@ namespace PageWatcher.Tasks
         {
             using (WebClient webClient = new WebClient())
             {
-                var json = webClient.DownloadString(url);
+                try
+                {
+                    var json = webClient.DownloadString(url);
+                    logger.Info("Message was sent via Telegram");
+                }
+                catch (Exception e)
+                {
+                    logger.Error(e);
+                }
             }
         }
     }

@@ -1,6 +1,6 @@
-﻿using PageWatcher.Models;
+﻿using System.Web.Mvc;
+using PageWatcher.Models;
 using PageWatcher.Tasks;
-using System.Web.Mvc;
 
 namespace PageWatcher.Controllers
 {
@@ -9,7 +9,7 @@ namespace PageWatcher.Controllers
         public ActionResult Index()
         {
 
-            var model = new PageViewModel
+            var model = new HomePageViewModel
             {
                 TicketsAvaliable = ServiceTask.TicketsAvaliable
             };

@@ -1,6 +1,6 @@
 ﻿namespace PageWatcher.Models
 {
-    public class PageViewModel
+    public class HomePageViewModel
     {
         public bool TicketsAvaliable { get; set; }
     }
