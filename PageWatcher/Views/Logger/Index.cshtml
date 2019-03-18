@@ -1,4 +1,4 @@
-﻿@model PageWatcher.Models.LoggerViewModel
+﻿@model List<PageWatcher.Models.InfoLogItemViewModel>
 
 @{
     ViewBag.Title = "Error Log Page";
@@ -8,7 +8,13 @@
 <div class="row">
     <div class="col-md-12">
         <div class="alert alert-info">
-            <p>@Model.json</p>
+            @foreach (var item in Model)
+            {
+                <div>
+                    <span>@(item.Time)</span>
+                    <span>@(item.Message)</span>
+                </div>
+            }
         </div>
     </div>
 </div>
