@@ -13,31 +13,15 @@
         <div class="col-md-8">
             @if (Model.TicketsAvaliable == true)
             {
-                <h3 class="panel-title">There are tickets avaliable</h3>
-
+                <h3>There are some tickets avaliable</h3>
                 <p>We've found some tickets on the</p>
-                <a href="https://msk.kassir.ru/koncert/ok-lujniki/metallica-worldwired-tour-2019_2019-07-21">
-                    https://msk.kassir.ru/koncert/ok-lujniki/metallica-worldwired-tour-2019_2019-07-21
-                </a>
             }
             else if (Model.TicketsAvaliable == false)
             {
-                <h3 class="panel-title">No tickets avaliable</h3>
-                <p>We didn't find any tickets on the</p>
-                <a href="https://msk.kassir.ru/koncert/ok-lujniki/metallica-worldwired-tour-2019_2019-07-21">
-                    https://msk.kassir.ru/koncert/ok-lujniki/metallica-worldwired-tour-2019_2019-07-21
-                </a>
+                <h3>No tickets avaliable</h3>
+                <p>We haven't found any tickets on the</p>
             }
-            else
-            {
-                <div class="panel panel-warning">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Model.TicketsAvaliable</h3>
-                        <div class="panel-body">@Model.TicketsAvaliable</div>
-                    </div>
-                </div>
-            }
-
+            <a href="@Model.Url">@Model.Url</a>
         </div>
         <div class="col-md-4">
             <div class="alert alert-info">

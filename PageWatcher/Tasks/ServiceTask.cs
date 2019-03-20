@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Configuration;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using PageWatcher.Utils;
 
 namespace PageWatcher.Tasks
 {
@@ -20,12 +20,12 @@ namespace PageWatcher.Tasks
 
         public ServiceTask()
         {
-            ResourceURL = ReadSetting("ResourceURL");
-            TargetCssClass = ReadSetting("TargetCssClass");
-            SuccessText = ReadSetting("SuccessText");
-            TelegramUrl = ReadSetting("TelegramUrl");
-            TelegramBotToken = ReadSetting("TelegramBotToken");
-            TelegramGroupId = ReadSetting("TelegramGroupId");
+            ResourceURL = ConfigUtils.ReadSetting("ResourceURL");
+            TargetCssClass = ConfigUtils.ReadSetting("TargetCssClass");
+            SuccessText = ConfigUtils.ReadSetting("SuccessText");
+            TelegramUrl = ConfigUtils.ReadSetting("TelegramUrl");
+            TelegramBotToken = ConfigUtils.ReadSetting("TelegramBotToken");
+            TelegramGroupId = ConfigUtils.ReadSetting("TelegramGroupId");
         }
 
         public void Start()
@@ -38,23 +38,6 @@ namespace PageWatcher.Tasks
                     LoadPage();
                 }
             });
-        }
-
-
-        private static string ReadSetting(string key)
-        {
-            try
-            {
-                var appSettings = ConfigurationManager.AppSettings;
-                string result = appSettings[key];
-                return result;
-            }
-            catch (ConfigurationErrorsException e)
-            {
-                logger.Error(e, "Error reading app settings");
-                return "Not Found";
-            }
-
         }
 
         private void LoadPage()
