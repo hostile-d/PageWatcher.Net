@@ -1,20 +1,48 @@
-﻿@model List<PageWatcher.Models.InfoLogItemViewModel>
+﻿@model List<PageWatcher.Models.LogItemViewModel>
 
 @{
     ViewBag.Title = "Error Log Page";
 }
 
+<div class="container-fluid">
+    @if (Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Level</th>
+                    <th scope="col">Exception</th>
+                    <th scope="col">Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{int index = 1;}
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@index</th>
+                        <td>@(item.Time)</td>
+                        <td>@(item.Level)</td>
+                        <td>@(item.Exception)</td>
+                        <td>
+                            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse@(index)" aria-expanded="false" aria-controls="collapseExample">
+                                Message
+                            </button>
+                            <div class="collapse" id="collapse@(index)">
+                                @(item.Message)
+                            </div>
+                        </td>
+                    </tr>
+                    @(index++)
+                }
+            </tbody>
+        </table>
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="alert alert-info">
-            @foreach (var item in Model)
-            {
-                <div>
-                    <span>@(item.Time)</span>
-                    <span>@(item.Message)</span>
-                </div>
-            }
-        </div>
-    </div>
+    }
+    else
+    {
+        <div>There is no logs yet.</div>
+    }
 </div>

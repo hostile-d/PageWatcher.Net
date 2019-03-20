@@ -3,56 +3,47 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
-<div class="jumbotron">
-    <h1>Page Watcher</h1>
-    <h2>This service monitors specific URL and informs whether some tickets shown there.</h2>
-</div>
-<div class="row">
-    <div class="col-md-8">
-        @if (Model.TicketsAvaliable == true)
-        {
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title">There are tickets avaliable</h3>
-                </div>
-                <div class="panel-body">
-                    We've found some tickets on the
-                    <a href="https://msk.kassir.ru/koncert/ok-lujniki/metallica-worldwired-tour-2019_2019-07-21">
-                        https://msk.kassir.ru/koncert/ok-lujniki/metallica-worldwired-tour-2019_2019-07-21
-                    </a>
-                </div>
-            </div>
-        }
-        else if (Model.TicketsAvaliable == false)
-        {
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title">No tickets avaliable</h3>
-                </div>
-                <div class="panel-body">
-                    We didn't find any tickets on the
-                    <a href="https://msk.kassir.ru/koncert/ok-lujniki/metallica-worldwired-tour-2019_2019-07-21">
-                        https://msk.kassir.ru/koncert/ok-lujniki/metallica-worldwired-tour-2019_2019-07-21
-                    </a>
-                </div>
-            </div>
-        }
-        else
-        {
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Model.TicketsAvaliable</h3>
-                    <div class="panel-body">@Model.TicketsAvaliable</div>
-                </div>
-            </div>
-        }
-
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-2">Page Watcher</h1>
+        <hr class="my-4">
+        <h2 class="lead">This service monitors specific URL and informs whether some tickets shown there.</h2>
     </div>
-    <div class="col-md-4">
-        <div class="alert alert-info">
-            <p>You can also follow the notification bot in this group, it'll send you a message if tickets appears: <a href="https://t.me/joinchat/EzpbLRDtmfww-grbZZVszA">https://t.me/joinchat/EzpbLRDtmfww-grbZZVszA</a></p>
+    <div class="row">
+        <div class="col-md-8">
+            @if (Model.TicketsAvaliable == true)
+            {
+                <h3 class="panel-title">There are tickets avaliable</h3>
+
+                <p>We've found some tickets on the</p>
+                <a href="https://msk.kassir.ru/koncert/ok-lujniki/metallica-worldwired-tour-2019_2019-07-21">
+                    https://msk.kassir.ru/koncert/ok-lujniki/metallica-worldwired-tour-2019_2019-07-21
+                </a>
+            }
+            else if (Model.TicketsAvaliable == false)
+            {
+                <h3 class="panel-title">No tickets avaliable</h3>
+                <p>We didn't find any tickets on the</p>
+                <a href="https://msk.kassir.ru/koncert/ok-lujniki/metallica-worldwired-tour-2019_2019-07-21">
+                    https://msk.kassir.ru/koncert/ok-lujniki/metallica-worldwired-tour-2019_2019-07-21
+                </a>
+            }
+            else
+            {
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Model.TicketsAvaliable</h3>
+                        <div class="panel-body">@Model.TicketsAvaliable</div>
+                    </div>
+                </div>
+            }
+
         </div>
-    </div>
+        <div class="col-md-4">
+            <div class="alert alert-info">
+                <p>You can also follow the notification bot in this group, it'll send you a message if tickets appears: <a href="https://t.me/joinchat/EzpbLRDtmfww-grbZZVszA">https://t.me/joinchat/EzpbLRDtmfww-grbZZVszA</a></p>
+            </div>
+        </div>
 
+    </div>
 </div>
