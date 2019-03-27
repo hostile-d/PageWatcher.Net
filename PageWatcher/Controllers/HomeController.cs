@@ -6,6 +6,7 @@ using PageWatcher.Utils;
 
 namespace PageWatcher.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         public ActionResult Index()
