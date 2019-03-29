@@ -229,6 +229,7 @@
     <None Include="packages.config" />
     <Content Include="Views\Auth\LogIn.cshtml" />
     <Content Include="AppPrivateSettings.config" />
+    <None Include="Properties\PublishProfiles\WinSever2016D4s - Web Deploy.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
