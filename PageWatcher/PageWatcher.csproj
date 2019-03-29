@@ -191,9 +191,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="AppPrivateSettings.config" />
     <Content Include="Logs\Log.json" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\App.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
@@ -227,6 +228,7 @@
     <Content Include="libman.json" />
     <None Include="packages.config" />
     <Content Include="Views\Auth\LogIn.cshtml" />
+    <Content Include="AppPrivateSettings.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

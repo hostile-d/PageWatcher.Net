@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using PageWatcher.Models;
 using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
-using PageWatcher.Models;
+using PageWatcher.Utils;
 
 namespace PageWatcher.Controllers
 {
@@ -38,13 +36,15 @@ namespace PageWatcher.Controllers
                 return View();
             }
 
+            var adminEmail = ConfigUtils.ReadSetting("adminEmail");
+            var adminPassword = ConfigUtils.ReadSetting("adminPassword");
             // Don't do this in production!
-            if (model.Email == "admin@admin.com" && model.Password == "password")
+            if (model.Email == adminEmail && model.Password == adminPassword)
             {
                 var identity = new ClaimsIdentity(new[] {
-                        new Claim(ClaimTypes.Name, "Ben"),
-                        new Claim(ClaimTypes.Email, "a@b.com"),
-                        new Claim(ClaimTypes.Country, "England")
+                        new Claim(ClaimTypes.Name, "Admin"),
+                        new Claim(ClaimTypes.Email, adminEmail),
+                        new Claim(ClaimTypes.Country, "Russia")
                     },
                     "ApplicationCookie");
 

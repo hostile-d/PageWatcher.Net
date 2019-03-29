@@ -9,6 +9,7 @@ namespace PageWatcher.Tasks
     public class ServiceTask
     {
         public static bool TicketsAvaliable { get; set; }
+        public static string LastUpdateTime { get; set; }
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
         private static string ResourceURL;
@@ -47,7 +48,7 @@ namespace PageWatcher.Tasks
                 try
                 {
                     string body = webClient.DownloadString(new Uri(ResourceURL));
-                    logger.Info("Resource URL was downloaded");
+                    LastUpdateTime = DateTime.UtcNow.ToString("o"); ;
                     ParseBody(body);
                 }
                 catch (Exception e)

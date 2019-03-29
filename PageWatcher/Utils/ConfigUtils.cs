@@ -10,13 +10,13 @@ namespace PageWatcher.Utils
             try
             {
                 var appSettings = ConfigurationManager.AppSettings;
-                string result = appSettings[key];
+                var result = appSettings[key];
                 return result;
             }
             catch (ConfigurationErrorsException e)
             {
                 logger.Error(e, "Error reading app settings");
-                return "Not Found";
+                throw;
             }
 
         }

@@ -23,9 +23,8 @@
             @if (User.Identity.IsAuthenticated)
             {
                 <ul class="navbar-nav">
-                    <li class="nav-item"><div class="navbar-text">Hello @User.Identity.Name</div></li>
                     <li class="nav-item">
-                        <a class="btn btn-sm btn-outline-info" href="@Url.Action("LogOut", "Auth")" role="button">Log Out</a>
+                        <a title="@User.Identity.Name" class="btn btn-sm btn-outline-info" href="@Url.Action("LogOut", "Auth")" role="button">Log Out</a>
                     </li>
                 </ul>
             }

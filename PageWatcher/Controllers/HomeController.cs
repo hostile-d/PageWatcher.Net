@@ -15,7 +15,8 @@ namespace PageWatcher.Controllers
             var model = new HomePageViewModel
             {
                 TicketsAvaliable = ServiceTask.TicketsAvaliable,
-                Url = Url
+                Url = Url,
+                LastUpdateTime = ServiceTask.LastUpdateTime
             };
 
             return View(model);

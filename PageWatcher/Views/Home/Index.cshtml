@@ -22,6 +22,10 @@
                 <p>We haven't found any tickets on the</p>
             }
             <a href="@Model.Url">@Model.Url</a>
+            @if (!string.IsNullOrEmpty(Model.LastUpdateTime))
+            {
+                <p id="date" data-timestamp="@Model.LastUpdateTime">Last time updated</p>
+            }
         </div>
         <div class="col-md-4">
             <div class="alert alert-info">
@@ -31,3 +35,5 @@
 
     </div>
 </div>
+@Scripts.Render("~/bundles/moment")
+@Scripts.Render("~/bundles/app")
