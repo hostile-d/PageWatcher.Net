@@ -18,7 +18,7 @@ namespace PageWatcher.Tasks
         private static string TelegramUrl;
         private static string TelegramBotToken;
         private static string TelegramGroupId;
-
+        private static bool NotSentYet;
         public ServiceTask()
         {
             ResourceURL = ConfigUtils.ReadSetting("ResourceURL");
@@ -27,6 +27,7 @@ namespace PageWatcher.Tasks
             TelegramUrl = ConfigUtils.ReadSetting("TelegramUrl");
             TelegramBotToken = ConfigUtils.ReadSetting("TelegramBotToken");
             TelegramGroupId = ConfigUtils.ReadSetting("TelegramGroupId");
+            NotSentYet = true;
         }
 
         public void Start()
@@ -65,11 +66,16 @@ namespace PageWatcher.Tasks
             if (match.Success)
             {
                 TicketsAvaliable = true;
-                SendMessage(GetSuccessUrlString());
+                if (NotSentYet)
+                {
+                    SendMessage(GetSuccessUrlString());
+                    NotSentYet = false;
+                }
             }
             else
             {
                 TicketsAvaliable = false;
+                NotSentYet = true;
             }
         }
 
