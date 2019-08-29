@@ -9,6 +9,6 @@ In my case it watches tickets on [https://msk.kassir.ru/koncert/ok-lujniki/metal
 
 It was originally done in JS: [https://github.com/hostile-d/PageWatcher.js](https://github.com/hostile-d/PageWatcher.js), then I desided to investigate .Net MVC while doing this small project.
 
-It's live on http://page-watcher.danils.ru
+It's live on [http://page-watcher.danils.ru](http://page-watcher.danils.ru)
 
-![PageWatcher screenshot](/blob/master/Screenshot.png)
+![PageWatcher screenshot](./Screenshot.png)
